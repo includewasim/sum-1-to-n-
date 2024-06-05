@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Application</title>
+    <style>
+       body{
+        font-size: 40px;
+       background-color : #FFE4E1;
+       }
+       #num1{
+        width: 600px;
+        font-size: 40px;
+       }
+       .method {
+        font-size: 50px;
+        margin-left: 100px;
+        border-radius: 30px;
+       }
+       
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Sum Finder</h1>
+        <form onsubmit="find()">
+        <input type="number" placeholder="Enter Number"  id="num1">
+        <br>
+        <br>
+        <input type="submit" value="M1" class="method">
+        <input type="submit" value="M2" class="method">
+        <input type="submit" value="M3" class="method">
+        
+        </form>
+        <h2 id="msg"></h2>
+    </center>
+
+    <script>
+        function find()
+        {
+            event.preventDefault();   
+            let num1=document.getElementById("num1");
+            let msg=document.getElementById("msg");
+
+            if(num1.value=="")
+            {
+                alert("You didnt enter any number ");
+                msg.innerHTML="";
+                num1.focus();
+                return;
+            }
+            
+            let n1=parseInt(num1.value);
+            let ans="";
+            
+
+            if(n1<0)
+            {
+                alert("Enter Positive Value ");
+                num1.value="";
+                msg.innerHTML="";
+                num1.focus();
+                return;
+            }
+
+            let ele =document.activeElement.value;
+
+            if(ele=="M1")
+            {
+                let sum=0;
+                let i=1;
+                while(i<=n1)
+                {
+                    sum=sum+i;
+                    i++;
+                }
+                ans="Sum = "+sum;
+                msg.innerHTML="M1--> "+ans;
+            }
+            else if(ele=="M2")
+            {
+                let sum=0;
+                let i=1;
+                do{
+                    sum=sum+i;
+                    i++;   
+                } while(i<=n1);
+                ans="Sum = "+sum;
+                msg.innerHTML="M2--> "+ans;
+            }
+            else if(ele=="M3")
+            {
+                let sum=0;
+                for(let i=1;i<=n1;i++)
+                {
+                    sum=sum+i;
+                }
+                ans="Sum = "+sum;
+                msg.innerHTML="M3--> "+ans;
+            }
+
+        }
+    </script>
+
+</body>
+</html>
